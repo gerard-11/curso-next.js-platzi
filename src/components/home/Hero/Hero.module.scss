@@ -1,0 +1,26 @@
+.Hero{
+  color: #fefefe;
+  text-align: center;
+}
+.HeroTitle{
+  letter-spacing: 5px;
+  margin:10px;
+  font-size: 8rem;
+  background: linear-gradient(
+                  135deg,
+                  #2e026d,
+                  #5b21b6,
+                  #2563eb,
+                  #38bdf8
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.Hero h2 {
+  margin:10px;
+  font-size:2.5rem;
+  color: #ffffff;
+  text-align: center;
+}

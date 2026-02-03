@@ -1,13 +1,14 @@
 import Link from "next/link";
+import style from "./Header.module.scss";
 
 export const Header=() => {
 
     return (
         <header>
             <nav>
-                <ul>
+                <ul  className={style.ul}>
                     <Link href='/'>
-                        <li>Home</li>
+                        <li >Home</li>
                     </Link>
                     <Link href='/store'>
                         <li>store</li>

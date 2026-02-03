@@ -1,0 +1,41 @@
+.main{
+  display: grid;
+  grid-template-columns:1fr 1fr;
+  column-gap:1.5rem;
+  max-width:800px;
+  padding: 2rem 2.5rem;
+  margin:2rem auto;
+
+}
+.Description__button{
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.Description__button--border{
+  border:3px solid #441469;
+}
+.imgContainer{
+  position: relative;
+  width:400px;
+  height:200px;
+
+}
+.imgContainer img{
+  object-fit: cover;
+  border-radius: 1rem ;
+  box-shadow: 0 0 4rem rgba(255, 255, 255, 0.2)
+
+}
+.textCont h2{
+  font-size:2rem;
+  font-weight: 600;
+  margin:0;
+
+}
+.textCont p{
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: white;
+  margin-top: 12px;
+}

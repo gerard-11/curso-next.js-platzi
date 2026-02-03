@@ -5,11 +5,10 @@ import {MainProducts} from "app/components/home/MainProducts";
 export default function Home() {
 
   return (
-      <main >
+      <main style={{backgroundColor: 'black'}} >
           <Hero/>
           <Description/>
           <MainProducts/>
       </main>
-
   );
 }

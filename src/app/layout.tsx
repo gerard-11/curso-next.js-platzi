@@ -2,6 +2,14 @@ import { Geist, Geist_Mono } from "next/font/google";
 import {Header} from "app/components/shared/Header";
 import React from "react";
 import {Footer} from "app/components/shared/Footer";
+import { Inter } from 'next/font/google'
+
+const inter=Inter({
+    subsets: ["cyrillic"],
+    weight:['100','300','500','700'],
+
+
+})
 
 
 const geistSans = Geist({
@@ -21,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${inter.className} ` } style={{backgroundColor:"black", color:'white'}}>
       <Header/>
       {children}
       <Footer/>
