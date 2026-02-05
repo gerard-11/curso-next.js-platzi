@@ -1,4 +1,5 @@
-import {NextResponse} from "next/server";
+
+import { getProduct } from "app/services/shopify";
 import Image from "next/image";
 import styles from './MainProducts.module.scss'
 
@@ -9,36 +10,19 @@ interface Product {
         src: string;
     }[];
 }
-const getProduct = async () => {
-    const url = `https://${process.env.SHOPIFY_HOSTNAME}/admin/api/2026-01/shop.json`;
-    console.log("URL FINAL 👉", url);
-
-    const response = await fetch(`https://${process.env.SHOPIFY_HOSTNAME}/admin/api/2026-01/products.json`, {
-        headers: new Headers({
-            'X-Shopify-Access-Token': process.env.SHOPIFY_API_KEY || "",
-            "Content-Type": "application/json"
-        })
-    })
-    if (!response.ok) {
-        return NextResponse.json(
-            {error: "Error al conectar con Shopify"},
-            {status: response.status}
-        );
-    }
-    const data = await response.json()
-    return data
-}
 
 
 const MainProducts = async () => {
-    const response= await getProduct();
-   console.log(response)
+    const response= await fetch('http://localhost:3000/api');
+  const { products } = await response.json();
+
     return (
         <section className={styles.MainProducts}>
             <h3>Main Products</h3>
             <div className={styles.MainProducts__grid}>
-                {response.products.map((product:Product) => {
+                {products?.map((product:Product) => {
                    const srcImage=product.images[0]?.src
+                   if(!srcImage)return
                     return (
                         <article key={product.id}>
                             <p>{product.title}</p>

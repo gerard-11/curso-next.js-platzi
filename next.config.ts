@@ -5,8 +5,14 @@ const nextConfig:NextConfig = {
   sassOptions: {
     includePaths: ['./sass'],
   },
+
   images: {
-    domains: ["cdn.shopify.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.shopify.com",
+      },
+    ],
   },
 };
 

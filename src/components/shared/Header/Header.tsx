@@ -13,6 +13,9 @@ export const Header=() => {
                     <Link href='/store'>
                         <li>store</li>
                     </Link>
+                    <Link href='/test'>
+                        <li>test</li>
+                    </Link>
                 </ul>
             </nav>
         </header>

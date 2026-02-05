@@ -4,10 +4,11 @@ import React from "react";
 import {Footer} from "app/components/shared/Footer";
 import { Inter } from 'next/font/google'
 
+import {ScrollToTop} from "app/ScrollToTop";
+
 const inter=Inter({
     subsets: ["cyrillic"],
     weight:['100','300','500','700'],
-
 
 })
 
@@ -31,6 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${inter.className} ` } style={{backgroundColor:"black", color:'white'}}>
       <Header/>
+      <ScrollToTop/>
       {children}
       <Footer/>
       </body>
