@@ -6,7 +6,6 @@ export const getProduct = async () => {
         const response = await fetch(shopifyUrls.products.all, {
             headers: new Headers({
                 'X-Shopify-Access-Token': env.SHOPIFY_TOKEN || '',
-
             })
         })
         const data = await response.json()
