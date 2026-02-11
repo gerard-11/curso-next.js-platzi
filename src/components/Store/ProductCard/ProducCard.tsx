@@ -1,18 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from './ProductCard.module.sass'
+import {ProductType} from "app/components/Store/types/product";
 
-type ProductType = {
-    id: string;
-    title: string;
-    description: string;
-    price:number
-    image: string;
-    quantity: number;
-    handle: string;
-    tags: string;
-
-};
 interface ProductCardInterface {
     product: ProductType
 }
@@ -20,7 +10,7 @@ interface ProductCardInterface {
 export const ProductCard = ({ product }: ProductCardInterface) => {
 
     return (
-        <Link href={`/articulo/${product.handle}?id=${product.id}`} className={styles.ProductCard__link}>
+        <Link href={`/product/${product.handle}?id=${product.id}`} className={styles.ProductCard__link}>
             <article className={styles.ProductCard}>
                 <Image
                     src={product.image}
