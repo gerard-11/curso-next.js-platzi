@@ -1,7 +1,11 @@
 import Link from "next/link";
 import style from "./Header.module.scss";
+import {cookies} from "next/headers";
 
-export const Header=() => {
+export const Header=async () => {
+
+    const cookiesStore=await cookies()
+    const token= cookiesStore.get('accessToken')?.value
 
     return (
         <header>
@@ -13,10 +17,8 @@ export const Header=() => {
                     <Link href='/store'>
                         <li>store</li>
                     </Link>
-                    <Link href='/test'>
-                        <li>test</li>
-                    </Link>
                 </ul>
+                {token ? <p>Hola usuario registrado</p> : <Link href='/login'>Login</Link>}
             </nav>
         </header>
     )

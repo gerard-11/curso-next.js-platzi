@@ -16,7 +16,6 @@ interface CategoryProps{
 
 export default async function Category({params}:CategoryProps){
     const { categories } = params
-    console.log('tipo de categoria', categories )
     let products=[]
     const collections = await getCollections()
 
