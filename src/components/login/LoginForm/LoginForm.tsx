@@ -1,12 +1,13 @@
 "use client"
 import styles from "./LoginForm.module.sass";
-import {handleLogin} from "app/actions";
+import { handleLogin } from "app/actions";
+
 
 
 export const LoginForm = () => {
-    const handleSubmit=async (event)=>{
+    const handleSubmit=async (event): Promise<void>=>{
         event.preventDefault()
-        const formData = new FormData(event.target);
+        const formData = new FormData(event.currentTarget);
         await handleLogin(formData)
     }
 

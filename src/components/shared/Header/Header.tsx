@@ -1,23 +1,31 @@
 import Link from "next/link";
-import style from "./Header.module.scss";
+import styles from "./Header.module.sass";
 import {validateAccessToke} from "app/utils/auth/validateAccessToken";
+import {ShoppingCart} from "app/components/shared/ShopingCart";
 
 export const Header=async () => {
 
     const customer= await validateAccessToke()
 
     return (
-        <header>
+        <header className={styles.Header}>
             <nav>
-                <ul  className={style.ul}>
-                    <Link href='/'>
-                        <li >Home</li>
-                    </Link>
-                    <Link href='/store'>
-                        <li>store</li>
-                    </Link>
+                <ul className={styles.Header__list}>
+                            <li >
+                            <Link href='/'>
+                            Home
+                            </Link>
+                            </li>
+                        <li >
+                        <Link href='/store'>
+                            Store
+                        </Link>
+                        </li>
                 </ul>
-                {customer?.firstName ? <p>Hola {customer.firstName}</p> : <Link href='/login'>Login</Link>}
+                <div className={styles.Header__user}>
+                    {customer?.firstName ? <p>Hola {customer.firstName}</p> : <Link href='/login'>Login</Link>}
+                    <ShoppingCart/>
+                </div>
             </nav>
         </header>
     )
