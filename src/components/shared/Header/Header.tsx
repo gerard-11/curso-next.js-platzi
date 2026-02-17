@@ -1,11 +1,12 @@
 import Link from "next/link";
 import styles from "./Header.module.sass";
-import {validateAccessToke} from "app/utils/auth/validateAccessToken";
-import {ShoppingCart} from "app/components/shared/ShopingCart";
+import {validateAccessToken} from "app/utils/auth/validateAccessToken";
+import ShoppingCart from "app/components/shared/ShopingCart";
+
 
 export const Header=async () => {
 
-    const customer= await validateAccessToke()
+    const customer= await validateAccessToken()
 
     return (
         <header className={styles.Header}>
@@ -24,7 +25,7 @@ export const Header=async () => {
                 </ul>
                 <div className={styles.Header__user}>
                     {customer?.firstName ? <p>Hola {customer.firstName}</p> : <Link href='/login'>Login</Link>}
-                    <ShoppingCart/>
+                    <ShoppingCart />
                 </div>
             </nav>
         </header>

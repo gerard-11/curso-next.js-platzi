@@ -1,6 +1,6 @@
 import {getProduct} from "app/services/shopify/products";
 import {ProductView} from "app/components/Store/ProductView/ProductView";
-import { redirect } from 'next/navigation'
+
 
 interface ProductPageProps {
     searchParams:Promise<{

@@ -7,7 +7,7 @@ import {ProductType} from "app/components/Store/types/product";
 
 const MainProducts = async () => {
     const products= await getProduct();
-    console.log(products);
+
 
     return (
         <section className={styles.MainProducts}>
