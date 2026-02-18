@@ -7,6 +7,6 @@ export type ProductType = {
     quantity: number;
     handle: string;
     tags: string;
-    merchandiseId: string;
+    gql_id: string;
 };
 

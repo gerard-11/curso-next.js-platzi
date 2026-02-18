@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 
+
 const nextConfig:NextConfig = {
   sassOptions: {
     includePaths: ['./sass'],
@@ -16,4 +17,4 @@ const nextConfig:NextConfig = {
   },
 };
 
-export default nextConfig;
+export default nextConfig

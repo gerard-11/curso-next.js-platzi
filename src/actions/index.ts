@@ -43,6 +43,12 @@ export const handleLogin = async (formData:FormData) => {
 
 
 export const handleCreateCart = async (items: CartItem[]):Promise<string | undefined> => {
+        console.log('ANTES DE ENVIAR A SHOPIFY:',
+            items.map(item => ({
+                    merchandiseId: item.merchandiseId,
+                    quantity: item.quantity
+            }))
+        )
         const cookiesStore =await cookies()
         const accessToken = cookiesStore.get('accessToken')?.value as string
 
@@ -62,7 +68,6 @@ export const handleCreateCart = async (items: CartItem[]):Promise<string | undef
                         }))
                 }
         }
-
         const { cartCreate }: {
                 cartCreate?: {
                         cart?: {
@@ -70,6 +75,7 @@ export const handleCreateCart = async (items: CartItem[]):Promise<string | undef
                         }
                 }
         } = await graphqlClient.request(createCartMutation, variables)
-        console.log(cartCreate)
+        console.log('cartCreate',cartCreate)
+
         return cartCreate?.cart?.checkoutUrl
 }

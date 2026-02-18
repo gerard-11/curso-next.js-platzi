@@ -2,7 +2,7 @@ import {getProduct} from "app/services/shopify/products";
 
 
 export async function GET(){
-    const { products }=await getProduct()
+    const  transformedProducts =await getProduct()
 
-    return Response.json({products})
+    return Response.json({transformedProducts})
 }
