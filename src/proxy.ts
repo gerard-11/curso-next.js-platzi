@@ -9,7 +9,7 @@ export const config = {
         '/signup/:path*',
     ]
 }
-export async function middleware(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
     const cookiesStore=await cookies()
     const accessToken=cookiesStore.get('accessToken')?.value
 
