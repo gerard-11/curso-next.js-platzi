@@ -12,9 +12,9 @@ interface ProductViewItemsOrderProps {
 }
 
 export const ProductViewItemsOrder = ({ maxQuantity, product}: ProductViewItemsOrderProps) => {
+    console.log('product',product);
     const [counter, setCounter] = useState(1);
     const { addToCart }=useShoppingCart()
-
     const handleAddToCart=(event:SyntheticEvent)=>{
         event.preventDefault()
         addToCart({
@@ -23,9 +23,8 @@ export const ProductViewItemsOrder = ({ maxQuantity, product}: ProductViewItemsO
             quantity:counter,
             image:product.image,
             id:product.id,
-            merchandiseId:product.merchandiseId
+            merchandiseId:product?.gql_id
         })
-
     }
     const handleSubmit = (event: SyntheticEvent) => {
         event.preventDefault();

@@ -1,17 +1,18 @@
 "use client";
-import { useState } from "react";
+import {SyntheticEvent, useState} from "react";
 import styles from "./newAccountForm.module.sass";
 import {handleCreateUser} from "app/actions";
-
 export const NewAccountForm = () => {
 
     const [errors, setErrors] = useState<string[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
-    const handleSubmit=async (event:Event)=>{
-        event.preventDefault();
-        const formData=new FormData(event.target)
-       await handleCreateUser(formData);
+
+    const handleSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
+        event.preventDefault()
+
+        const formData = new FormData(event.currentTarget)
+        await handleCreateUser(formData)
     }
 
     return (

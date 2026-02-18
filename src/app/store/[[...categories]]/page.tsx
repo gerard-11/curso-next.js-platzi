@@ -3,6 +3,8 @@ import {getProduct} from "app/services/shopify/products";
 import {getCollectionProducts, getCollections} from "app/services/shopify/collections";
 
 
+export const runtime='edge'
+
 type Collection = {
     id: string
     handle: string

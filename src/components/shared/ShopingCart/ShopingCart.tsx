@@ -7,8 +7,6 @@ import {handleCreateCart} from "app/actions";
 import {ShoppingCartItem} from "app/components/shared/ShopingCart/shoppingCartItem";
 
 
-
-
 export default function ShoppingCart(){
     const { cart }=useShoppingCart()
 
@@ -16,7 +14,6 @@ export default function ShoppingCart(){
     const [isBuying, setIsBuying] = useState(false)
     const [isMounted, setIsMounted] = useState(false)
     const hasItems=cart.length > 0
-console.log(cart)
 
     const handleOpen=()=> {
         if(hasItems){
@@ -25,6 +22,8 @@ console.log(cart)
     }
 
     const handleBuy=async ()=>{
+        console.log(cart)
+
         try{
             setIsBuying(true)
             const checkoutUrl=await handleCreateCart(cart)
