@@ -13,6 +13,12 @@
      left: -.5rem
      cursor: pointer
      color: red
+     @media (max-width: 768px)
+       top: 0.5rem
+       left: unset
+       right: 1rem
+       font-size: 1.5rem
+       z-index: 20
   &__items
       position: absolute
       background: black
@@ -23,7 +29,23 @@
       min-width: 250px
       padding: 1rem
       top: 5rem
-      z-index: 1
+      z-index: 10
+      @media (max-width: 768px)
+        position: fixed
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        right: unset
+        width: 85vw
+        max-width: 380px
+        max-height: 80vh
+        overflow-y: auto
+        min-width: unset
+        padding-top: 2rem /* Espacio para la X */
+        box-shadow: 0 0 20px rgba(0,0,0,0.5)
+        border: 1px solid #333
+        background: rgba(20, 20, 20, 0.98)
+        backdrop-filter: blur(10px)
   &__counter
     position: absolute
     border-radius: 50%

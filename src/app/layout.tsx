@@ -1,14 +1,15 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import {Header} from "app/components/shared/Header";
+import { Header } from "app/components/shared/Header";
 import React from "react";
-import {Footer} from "app/components/shared/Footer";
+import { Footer } from "app/components/shared/Footer";
 import { Inter } from 'next/font/google'
 
-import {ScrollToTop} from "app/ScrollToTop";
+import { ScrollToTop } from "app/ScrollToTop";
+import "app/sass/globals.sass";
 
-const inter=Inter({
-    subsets: ["cyrillic"],
-    weight:['100','300','500','700'],
+const inter = Inter({
+  subsets: ["cyrillic"],
+  weight: ['100', '300', '500', '700'],
 
 })
 
@@ -30,11 +31,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${inter.className} ` } style={{backgroundColor:"black", color:'white'}}>
-      <Header/>
-      <ScrollToTop/>
-      {children}
-      <Footer/>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${inter.className} `} style={{ backgroundColor: "black", color: 'white' }}>
+        <Header />
+        <ScrollToTop />
+        {children}
+        <Footer />
       </body>
     </html>
   );

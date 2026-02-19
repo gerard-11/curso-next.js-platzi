@@ -1,27 +1,38 @@
-.MainProducts{
+.MainProducts {
   text-align: center;
   font-size: 3rem
 }
 
-.MainProducts__grid{
+.MainProducts__grid {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 400px 400px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
 }
 
-.MainProducts article{
+.MainProducts article {
   position: relative;
   width: 100%;
   z-index: 1;
   min-height: 400px;
 }
-.MainProducts img{
+
+.MainProducts img {
   height: 300px;
   opacity: 0.4;
   object-fit: cover;
+
+  @media (max-width: 768px) {
+    height: 250px;
+  }
 }
-.MainProducts p{
+
+.MainProducts p {
   position: absolute;
   top: 0;
   right: 1.5rem;
@@ -30,4 +41,14 @@
   font-weight: 700;
   max-width: 300px;
   text-align: right;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    right: 1rem;
+    max-width: 80%;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 }

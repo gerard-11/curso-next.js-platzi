@@ -4,10 +4,20 @@
   grid-template-columns: 1fr 450px
   grid-gap: 5rem
   margin-top: 5rem
+  @media (max-width: 768px)
+    grid-template-columns: 1fr
+    grid-gap: 2rem
+    margin-top: 2rem
+    padding: 0 1rem
   &__images
     justify-self: end
+    @media (max-width: 768px)
+      justify-self: center
     & > img
       border-radius: 0.5rem
+      @media (max-width: 768px)
+        width: 100%
+        height: auto
   &__info
     display: flex
     flex-direction: column
