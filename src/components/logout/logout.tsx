@@ -7,8 +7,7 @@ export default function LogoutButton() {
     const handleLogout = async () => {
         await fetch('/api/logout', { method: 'POST' })
         router.refresh()
-        router.push('/')
+        router.replace('/')
     }
-
     return <button onClick={handleLogout}>Cerrar sesión</button>
 }

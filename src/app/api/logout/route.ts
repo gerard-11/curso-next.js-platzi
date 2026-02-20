@@ -1,13 +1,14 @@
-// app/api/logout/route.ts
+
 import { cookies } from 'next/headers'
+import { revalidatePath } from 'next/cache'
 
 export async function POST() {
-    const cookieStore =await  cookies()
+    const cookiesStore = await cookies()
+   cookiesStore.delete({ name: 'accessToken', path: '/' })
 
-    cookieStore.delete({
-        name: 'accessToken',
-        path: '/', // 🔴 CLAVE
-    })
+    revalidatePath('/')
+    revalidatePath('/store')
+    revalidatePath('/my-account')
 
     return Response.json({ ok: true })
 }

@@ -34,12 +34,13 @@ export const Header=async () => {
                         </Link>
                     )}
                     { token&&customer?.firstName?
-                        <Link href='/my-account'>
-                            <p>Hola {customer.firstName}</p>
+                        <div>
+                            <Link href='/my-account'>
+                                <p>Hola {customer.firstName}</p>
+                            </Link>
                             <LogoutButton/>
-                        </Link>
-                        : <Link href='/login'>Login</Link>}
-
+                        </div>
+                            : <Link href='/login'>Login</Link>}
 
                     <ShoppingCart />
                 </div>
