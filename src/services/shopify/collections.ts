@@ -22,7 +22,8 @@ export const getCollections = async () => {
         }))
         return transformedCollections
     }catch(e){
-        console.error(e)
+        console.error('error fetching collections', e)
+        return []
     }
 }
 
@@ -37,5 +38,6 @@ export const getCollectionProducts = async (id: string) => {
         return products
     }catch(e){
         console.error(e)
+        return []
     }
 }

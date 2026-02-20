@@ -9,10 +9,12 @@ interface ProductsWrapperProps {
 
 export const  ProductsWrapper = ({ products }: ProductsWrapperProps) => {
 
+
     return (
         <div className={styles.ProductsWrapper}>
             {products?.map((product) => {
-                if (!product.image?.trim()) return null
+                if (!product) return <p>categoria vacia</p>
+                if (!product.image) return null
                return(<ProductCard key={product.id} product={product} />)
             })}
         </div>
