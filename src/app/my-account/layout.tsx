@@ -1,4 +1,6 @@
 import styles from './myAccount.module.sass'
+import {cookies} from "next/headers";
+import {redirect} from "next/navigation";
 interface MyAccountLayoutProps {
     children: React.ReactNode;
     ordersInfo: React.ReactNode;
@@ -6,6 +8,11 @@ interface MyAccountLayoutProps {
 }
 
 export default async function MyAccountLayout(props: MyAccountLayoutProps) {
+    const cookiesStore= await cookies()
+    const token = cookiesStore.get('accessToken')?.value
+    if (!token) {
+        redirect('/')
+    }
     return (
         <div className={styles.MyAccount}>
             {props.children}

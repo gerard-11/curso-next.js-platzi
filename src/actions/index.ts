@@ -6,6 +6,7 @@ import {createAccessToken} from "app/utils/auth/createAccessToken";
 import {redirect} from "next/navigation";
 import {validateAccessToken} from "app/utils/auth/validateAccessToken";
 import {cookies} from "next/headers";
+import {revalidatePath} from "next/cache";
 
 
 
@@ -78,4 +79,9 @@ export const handleCreateCart = async (items: CartItem[]):Promise<string | undef
         console.log('cartCreate',cartCreate)
 
         return cartCreate?.cart?.checkoutUrl
+}
+
+export async function revalidateHeader() {
+        "use server";
+        revalidatePath("/", "layout");
 }

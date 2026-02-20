@@ -24,7 +24,7 @@ export default async function MyAccountPage() {
         <div>
             <h2>Your orders</h2>
             <section>
-                {ordersInfo.orders?.map((order: OrderType) => (
+                {ordersInfo?.orders?.map((order: OrderType) => (
                     <a href={order.statusUrl} key={order.orderNumber} className={styles.OrderInfo}>
                         <div className={styles.OrderInfo__header}>
                             <h3>Order {order.name}</h3>

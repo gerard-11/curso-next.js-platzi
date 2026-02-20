@@ -1,6 +1,9 @@
 .MainProducts {
   text-align: center;
-  font-size: 3rem
+  font-size: 3rem;
+  @media (max-width: 768px) {
+   font-size: 2rem;
+  }
 }
 
 .MainProducts__grid {
