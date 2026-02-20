@@ -4,6 +4,7 @@ import {cookies} from "next/headers";
 import {env} from "app/config/env";
 
 export const validateAccessToken = async () => {
+
     const cookiesStore = await cookies();
     const accessToken = cookiesStore.get('accessToken')?.value;
 
@@ -14,7 +15,9 @@ export const validateAccessToken = async () => {
             'X-Shopify-Storefront-Access-Token': env.SHOPIFY_STOREFRONT_TOKEN!,
         },
         fetch: (url, options) =>
-            fetch(url, { ...options, cache: 'no-store' }) // 🔥 clave
+            fetch(url, { ...options,
+                cache: "no-store"
+            })
     });
 
     const { customer } = await client.request(customerName, {
