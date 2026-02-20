@@ -1,22 +1,25 @@
-import {cookies} from "next/headers";
-import {GraphQLClientSingleton} from "app/graphql";
+import { GraphQLClient } from 'graphql-request';
 import {customerName} from "app/graphql/queries/customerName";
+import {cookies} from "next/headers";
+import {env} from "app/config/env";
 
-export const validateAccessToken=async ()=>{
-    const cookiesStore=await cookies()
-    const accessToken=cookiesStore.get('accessToken')?.value;
+export const validateAccessToken = async () => {
+    const cookiesStore = await cookies();
+    const accessToken = cookiesStore.get('accessToken')?.value;
 
-    if (!accessToken) {
-        return null;
-    }
-    const graphqlClient=GraphQLClientSingleton.getInstance().getClient();
-    try{
-        const { customer } = await graphqlClient.request(customerName,{
-            customerAccessToken:accessToken,
-        })
-        return customer;
-    }catch(err){
-        console.error('invalid access token',err);
-        return null
-    }
-}
+    if (!accessToken) return null;
+
+    const client = new GraphQLClient(env.SHOPIFY_GRAPHQL_ENDPOINT!, {
+        headers: {
+            'X-Shopify-Storefront-Access-Token': env.SHOPIFY_STOREFRONT_TOKEN!,
+        },
+        fetch: (url, options) =>
+            fetch(url, { ...options, cache: 'no-store' }) // 🔥 clave
+    });
+
+    const { customer } = await client.request(customerName, {
+        customerAccessToken: accessToken,
+    });
+
+    return customer;
+};

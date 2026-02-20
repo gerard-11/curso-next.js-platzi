@@ -2,12 +2,16 @@ import Link from "next/link";
 import styles from "./Header.module.sass";
 import {validateAccessToken} from "app/utils/auth/validateAccessToken";
 import ShoppingCart from "app/components/shared/ShopingCart";
+import LogoutButton from "app/components/logout/logout";
+import {cookies} from "next/headers";
+import {unstable_noStore} from "next/cache";
 
 
 export const Header=async () => {
-
+    unstable_noStore()
     const customer= await validateAccessToken()
-
+    const cookiesStore= await cookies()
+    const token= cookiesStore.get('accessToken');
     return (
         <header className={styles.Header}>
             <nav>
@@ -29,11 +33,14 @@ export const Header=async () => {
                             Signup
                         </Link>
                     )}
-                    {customer?.firstName ?
+                    { token&&customer?.firstName?
                         <Link href='/my-account'>
                             <p>Hola {customer.firstName}</p>
+                            <LogoutButton/>
                         </Link>
                         : <Link href='/login'>Login</Link>}
+
+
                     <ShoppingCart />
                 </div>
             </nav>

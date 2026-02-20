@@ -6,6 +6,8 @@
   position: relative
   &__cart
     cursor: pointer
+    margin-top: -0.3rem
+    margin-left: 0.6rem
   &__close
      position: absolute
      top: -3.3rem
@@ -48,11 +50,11 @@
         backdrop-filter: blur(10px)
   &__counter
     position: absolute
-    border-radius: 50%
+    border-radius: 60%
     background-color: red
     color: white
     padding: .25rem
-    top: -1.3rem
+    top: -0.8rem
     left: 0
     z-index: 1
     width: .5rem
@@ -61,6 +63,9 @@
     width: 1.25rem
     height: 1.25rem
     fill: white
+    @media (max-width: 768px)
+      width: 1rem
+      height: 1rem
   &__buyButton
     background: red
     color: white

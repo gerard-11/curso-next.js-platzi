@@ -1,5 +1,5 @@
 import React from "react";
-import {getCollections} from "app/services/shopify/collections";
+import { getCollections } from "app/services/shopify/collections";
 import Link from "next/link";
 import {ShopifyCollection} from "app/services/shopify/collections";
 import styles from './storeLayout.module.sass'
@@ -21,7 +21,6 @@ export default async function Layout({ children }:{ children:React.ReactNode }){
                         {collection.title}
                     </Link>
                 ))
-
             }
                 </ul>
             </nav>

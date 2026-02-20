@@ -16,7 +16,7 @@ export const NewAccountForm = () => {
     }
 
     return (
-        <div className={styles.NewAccountForm}  >
+        <div className={styles.NewAccountForm} >
             <h1 className={styles.NewAccountForm__title}>New Account</h1>
             <form className={styles.NewAccountForm__form} onSubmit={handleSubmit}>
                 <input type="text" name="firstName" placeholder="Name" disabled={loading} />
