@@ -10,15 +10,14 @@
     margin-left: 0.6rem
   &__close
      position: absolute
-     top: -3.3rem
-     font-size: 2rem
-     left: -.5rem
+     top: -1.5rem
+     font-size: 1.5rem
+     left: .3rem
      cursor: pointer
      color: red
      @media (max-width: 768px)
-       top: 0.5rem
-       left: unset
-       right: 1rem
+       top: -1.5rem
+       left: .5rem
        font-size: 1.5rem
        z-index: 20
   &__items
@@ -32,22 +31,19 @@
       padding: 1rem
       top: 5rem
       z-index: 10
-      @media (max-width: 768px)
-        position: fixed
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%)
-        right: unset
-        width: 85vw
-        max-width: 380px
-        max-height: 80vh
-        overflow-y: auto
-        min-width: unset
-        padding-top: 2rem /* Espacio para la X */
-        box-shadow: 0 0 20px rgba(0,0,0,0.5)
-        border: 1px solid #333
-        background: rgba(20, 20, 20, 0.98)
-        backdrop-filter: blur(10px)
+      max-height: 70vh
+      overflow-y: auto
+      display: flex
+      flex-direction: column
+
+      &::-webkit-scrollbar-track
+        background: rgba(255, 255, 255, 0.1)
+        border-radius: 4px
+      &::-webkit-scrollbar-thumb
+        background: rgba(255, 255, 255, 0.3)
+        border-radius: 4px
+        &:hover
+          background: rgba(255, 255, 255, 0.5)
   &__counter
     position: absolute
     border-radius: 60%
@@ -74,6 +70,8 @@
     border-radius: .7rem
     font-weight: bold
     cursor: pointer
+    margin-top: auto  // ✅ Empuja el botón hacia abajo
+    flex-shrink: 0
 
 
 
