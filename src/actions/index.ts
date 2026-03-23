@@ -22,7 +22,12 @@ export const handleCreateUser = async (formData:FormData) => {
                 }
         }
         const { customerCreate }= await graphqlClient.request(createUserMutation,variables)
-        const {  customer }= customerCreate
+        const { customer, customerUserErrors }= customerCreate
+
+        if(customerUserErrors && customerUserErrors.length > 0){
+                const errorMessages = customerUserErrors.map((error: any) => error.message).join(', ')
+                throw new Error(errorMessages)
+        }
 
         if(customer?.firstName){
                 await createAccessToken(
@@ -44,12 +49,6 @@ export const handleLogin = async (formData:FormData) => {
 
 
 export const handleCreateCart = async (items: CartItem[]):Promise<string | undefined> => {
-        console.log('ANTES DE ENVIAR A SHOPIFY:',
-            items.map(item => ({
-                    merchandiseId: item.merchandiseId,
-                    quantity: item.quantity
-            }))
-        )
         const cookiesStore =await cookies()
         const accessToken = cookiesStore.get('accessToken')?.value as string
 

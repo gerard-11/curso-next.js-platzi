@@ -2,6 +2,7 @@
 import {SyntheticEvent, useState} from "react";
 import styles from "./newAccountForm.module.sass";
 import {handleCreateUser} from "app/actions";
+
 export const NewAccountForm = () => {
 
     const [errors, setErrors] = useState<string[]>([]);
@@ -10,9 +11,16 @@ export const NewAccountForm = () => {
 
     const handleSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
         event.preventDefault()
-
         const formData = new FormData(event.currentTarget)
-        await handleCreateUser(formData)
+
+        try{
+            setLoading(true);
+            setErrors([]);
+            await handleCreateUser(formData)
+        }catch(err: any){
+            setErrors([err.message])
+            setLoading(false)
+        }
     }
 
     return (

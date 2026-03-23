@@ -14,7 +14,7 @@ export const getCustomerOrders=async()=>{
     const {customer }= await graphqlClient.request(getOrdersQuery, variables )
     const orders= customer?.orders?.edges.map((edge:any)=> edge.node)
 
-    return{
+    return {
         totalOrders:customer?.orders?.totalCount,
         orders
 
