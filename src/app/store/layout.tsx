@@ -12,6 +12,10 @@ export default async function Layout({ children }:{ children:React.ReactNode }){
     return (
         <main className={styles.StoreLayout}>
             <nav>
+                <div className={styles.StoreLayout__header}>
+                    <h2 className={styles.StoreLayout__title}>Categorías</h2>
+                    <p className={styles.StoreLayout__subtitle}>Desliza hacia la derecha</p>
+                </div>
                 <ul className={styles.StoreLayout__list}>{
                 collections.map((collection:ShopifyCollection) =>(
                     <Link

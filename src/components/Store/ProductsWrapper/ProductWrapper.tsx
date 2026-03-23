@@ -9,7 +9,6 @@ interface ProductsWrapperProps {
 
 export const  ProductsWrapper = ({ products }: ProductsWrapperProps) => {
 
-
     return (
         <div className={styles.ProductsWrapper}>
             {products?.map((product) => {

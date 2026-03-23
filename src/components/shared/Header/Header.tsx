@@ -5,22 +5,16 @@ import {validateAccessToken} from "app/utils/auth/validateAccessToken";
 import ShoppingCart from "app/components/shared/ShopingCart";
 import LogoutButton from "app/components/logout/logout";
 import {cookies} from "next/headers";
-import {unstable_noStore} from "next/cache";
-
-
-
 
 export const Header=async () => {
-    console.log('HEADER RENDER')
-
     const cookiesStore= await cookies()
     const token= cookiesStore.get('accessToken');
     let customer=null
+
     if (token) {
         customer = await validateAccessToken()
     }
     const isLoggedIn = !!customer
-    console.log('USER TOKEN:', token)
 
     return (
         <header className={styles.Header}>
@@ -37,13 +31,13 @@ export const Header=async () => {
                         </Link>
                         </li>
                 </ul>
-                <div  key={customer ? "auth" : "guest"}  className={styles.Header__user}>
+                <div  key={ customer ? "auth" : "guest"}  className={styles.Header__user}>
                     {!customer&&(
                         <Link href='/signup'>
                             Signup
                         </Link>
                     )}
-                    { isLoggedIn?
+                    { isLoggedIn ?
                         <div>
                             <Link href='/my-account'>
                                 <p>Hola {customer?.firstName}</p>
@@ -54,7 +48,6 @@ export const Header=async () => {
                             Login
                             </Link>
                     }
-
                     <ShoppingCart />
                 </div>
             </nav>
