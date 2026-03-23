@@ -1,0 +1,106 @@
+.MobileMenu
+  display: none
+  @media (max-width: 768px)
+    display: block
+    order: 1
+
+  &__hamburger
+    display: none
+    flex-direction: column
+    gap: 0.4rem
+    background: transparent
+    border: none
+    cursor: pointer
+    padding: 0.5rem
+    z-index: 101
+    @media (max-width: 768px)
+      display: flex
+
+  &__line
+    width: 24px
+    height: 2px
+    background-color: #e5e5e5
+    transition: all 0.3s ease
+    border-radius: 2px
+
+  &__dropdown
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    background: linear-gradient(180deg, rgba(0,0,0,0.98) 0%, rgba(46, 2, 109, 0.4) 100%)
+    backdrop-filter: blur(20px)
+    border-bottom: 2px solid transparent
+
+    max-height: 0
+    overflow: hidden
+    transition: max-height 0.3s ease
+    width: 100%
+
+    &_open
+      max-height: 450px
+
+  &__list
+    display: flex
+    flex-direction: column
+    gap: 0
+    list-style: none
+    margin: 0
+    padding: 1rem 0
+    border-bottom: 1px solid rgba(91, 33, 182, 0.2)
+
+    & > li > a
+      display: block
+      color: #e5e5e5
+      text-decoration: none
+      font-size: 0.95rem
+      font-weight: 500
+      padding: 0.75rem 1.5rem
+      transition: all 0.2s ease
+      &:hover
+        color: #38bdf8
+        text-shadow: 0 0 8px rgba(56, 189, 248, 0.5)
+        background-color: rgba(56, 189, 248, 0.1)
+
+  &__user
+    display: flex
+    flex-direction: column
+    gap: 0.5rem
+    padding: 1rem
+    align-items: stretch
+
+    & > a
+      color: white
+      text-decoration: none
+      font-size: 0.95rem
+      font-weight: 500
+      padding: 0.75rem 0.5rem
+      transition: all 0.2s ease
+      text-align: center
+      border-radius: 4px
+      &:hover
+        color: #38bdf8
+        background-color: rgba(56, 189, 248, 0.1)
+
+  &__userLogged
+    display: flex
+    flex-direction: column
+    gap: 0.5rem
+    align-items: stretch
+
+    & > a
+      color: white
+      text-decoration: none
+      font-size: 0.95rem
+      font-weight: 500
+      padding: 0.75rem 0.5rem
+      transition: all 0.2s ease
+      text-align: center
+      border-radius: 4px
+      &:hover
+        color: #38bdf8
+        background-color: rgba(56, 189, 248, 0.1)
+
+      & > p
+        margin: 0
+        padding: 0
