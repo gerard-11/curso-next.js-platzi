@@ -4,6 +4,7 @@ import styles from "./Header.module.sass";
 import {validateAccessToken} from "app/utils/auth/validateAccessToken";
 import ShoppingCart from "app/components/shared/ShopingCart";
 import LogoutButton from "app/components/logout/logout";
+import MobileMenu from "app/components/shared/Header/MobileMenu";
 import {cookies} from "next/headers";
 
 export const Header=async () => {
@@ -50,6 +51,7 @@ export const Header=async () => {
                     }
                     <ShoppingCart />
                 </div>
+                <MobileMenu isLoggedIn={isLoggedIn} firstName={customer?.firstName} />
             </nav>
         </header>
     )
