@@ -19,9 +19,6 @@ interface CategoryProps {
 export default async function Category({ params }: CategoryProps) {
     const { categories } =  await params;//categories es el array de rutas dinamicas
     let products = [];
-    console.log('categories param:', categories);
-    console.log('categories[0]:', categories?.[0]);
-    console.log('type:', typeof categories?.[0]);
     try {
         const collections = await getCollections();
 
