@@ -30,20 +30,27 @@ export const handleCreateUser = async (formData:FormData) => {
         }
 
         if(customer?.firstName){
-                await createAccessToken(
+                const tokenResult = await createAccessToken(
                     formDataObject.email as string,
                     formDataObject.password as string
                 )
-                redirect('/store')
+                if(tokenResult.success) {
+                        redirect('/store')
+                }
         }
 }
 
 export const handleLogin = async (formData:FormData) => {
         const formDataObject=Object.fromEntries(formData)
-        const accessToken=await createAccessToken(formDataObject.email as string,formDataObject.password as string)
+        const result=await createAccessToken(formDataObject.email as string,formDataObject.password as string)
 
-        if(accessToken){
+        if(result.success){
                 redirect('/store')
+        } else {
+                return {
+                        success: false,
+                        error: result.error || 'Error al iniciar sesión'
+                }
         }
 }
 
